@@ -1,1 +1,1 @@
-console.log('docker is runnnig');
+console.log('docker is runed');
