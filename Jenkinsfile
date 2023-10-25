@@ -25,7 +25,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'docker run -d --restart=always --name=filejs ostapiv333/filejs'
+                sh 'docker run --name=filejs ostapiv333/filejs'
             }
         }
     }
