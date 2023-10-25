@@ -8,24 +8,24 @@ pipeline {
     stages {
         stage('Stop running container') {
             steps {
-                sh 'docker ps -a -q --filter name=fileJS | xargs -r docker stop'
-                sh 'docker ps -a -q --filter name=fileJS | xargs -r docker rm -f'
+                sh 'docker ps -a -q --filter name=filejs | xargs -r docker stop'
+                sh 'docker ps -a -q --filter name=filejs | xargs -r docker rm -f'
             }
         }
         stage('Rm old docker image') {
              steps {
-                 sh 'docker images -q fileJS | xargs -r docker image rm'
+                 sh 'docker images -q filejs | xargs -r docker image rm'
              }
          }
         stage('Build docker image') {
             steps {
-                sh 'docker build -t ostapiv333/fileJS -f Dockerfile .'
+                sh 'docker build -t ostapiv333/filejs -f Dockerfile .'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'docker run -d --restart=always --name=fileJS ostapiv333/fileJS'
+                sh 'docker run -d --restart=always --name=filejs ostapiv333/filejs'
             }
         }
     }
